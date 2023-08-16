@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Calculadora IMC</title>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">Calculadora IMC</h1>
+    <form action="/" method="post">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="span-altura"><i class="fa-solid fa-text-height"></i></span>
+        <input name="altura" type="text" class="form-control" placeholder="Altura (cm)">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="span-peso"><i class="fa-solid fa-weight-hanging"></i></span>
+        <input name="peso" type="text" class="form-control" placeholder="Peso (Kg)">
+      </div>
+      <div class="d-grid gap-2 col-1 mx-auto">
+        <button type="submit" class="btn btn-primary">Calcular</button>
+      </div>
+    </form>
+    <div th:if="${calculoIMC}" class="row mt-5">
+      <div class="col-6">
+        <h3>Seu IMC é</h3>
+        <h3 th:text="${calculoIMC}"></h3>
+        <h3 th:text="${textoCategoria}"></h3>
+      </div>
+      <div class="col-6">
+        <table class="table table-striped">
+          <tr>
+            <td><strong>Faixa IMC</strong></td>
+            <td><strong>Categoria</strong></td>
+          </tr>
+          <tr>
+            <td>Menor que 18,5</td>
+            <td>Abaixo do peso</td>
+          </tr>
+          <tr>
+            <td>Entre 18,6 e 24,9</td>
+            <td>Peso Ideal</td>
+          </tr>
+          <tr>
+            <td>Entre 25 e 29,9</td>
+            <td>Sobre Peso</td>
+          </tr>
+          <tr>
+            <td>Entre 30 e 34,9</td>
+            <td>Obesidade Grau 1</td>
+          </tr>
+          <tr>
+            <td>Entre 35 e 39,9</td>
+            <td>Obesidade Grau 2 (Severa)</td>
+          </tr>
+          <tr>
+            <td>Acima de 40</td>
+            <td>Obesidade Grau 3 (Mórbida)</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
